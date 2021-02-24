@@ -1,31 +1,31 @@
 const path = require("path");
 const { NODE_ENV = "production" } = process.env;
-const nodeExternals = require('webpack-node-externals');
-
+const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
-    entry: './src/index.ts',
-    mode: NODE_ENV,
-    target: 'node',
-    devtool: 'inline-source-map',
-    watch: NODE_ENV === 'development',
-    externals: [nodeExternals()],
-    output: {
-      path: path.resolve(__dirname, 'build'),
-      filename: 'index.js'
+  entry: "./src/index.ts",
+  mode: NODE_ENV,
+  target: "node",
+  devtool: "inline-source-map",
+  watch: NODE_ENV === "development",
+  output: {
+    path: path.resolve(__dirname, "build"),
+    filename: "[name].js",
+  },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
     },
-    resolve: {
-      extensions: ['.ts', '.js'],
-    },
-    module: {
-      rules: [
-        {
-          test: /\.ts$/,
-          use: [
-            'ts-loader'
-          ],
-          exclude: /node_modules/,
-        }
-      ]
-    }
-  }
+  },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: ["ts-loader"],
+      },
+    ],
+  },
+};
