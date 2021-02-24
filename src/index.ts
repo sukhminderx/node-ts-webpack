@@ -7,7 +7,7 @@ const { PORT = 8080 } = process.env;
 
 app.get("/", (req: Request, res: Response) => {
   res.send({
-    message: "hello worldd",
+    message: "hello world..",
   });
 });
 
